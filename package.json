@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/Suchitra-s/bhagavanthatestserver/issues"
   },
-  "homepage": "https://github.com/Suchitra-s/bhagavanthatestserver#readme"
+  "homepage": "https://github.com/Suchitra-s/bhagavanthatestserver#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
 }
