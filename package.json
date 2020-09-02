@@ -1,0 +1,20 @@
+{
+  "name": "ls",
+  "version": "1.0.0",
+  "description": "bhagavanthaAppTestServer",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Suchitra-s/bhagavanthatestserver.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Suchitra-s/bhagavanthatestserver/issues"
+  },
+  "homepage": "https://github.com/Suchitra-s/bhagavanthatestserver#readme"
+}
