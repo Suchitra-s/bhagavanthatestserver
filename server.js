@@ -22,58 +22,53 @@ webserver.use(bodyParser.json()); // this is deserializer
 //webserver.use ( express.static("dist") ) ;
 
 
-let books = [
-    { title: "T1", author: "A1", price: 1000 },
-    { title: "T2", author: "A2", price: 2000 }
+let categories = 
+[
+    { categoryId : 1, categoryName : "ಗಣೇಶ ಸ್ತುತಿ"},
+    { categoryId : 2, categoryName : "ಶ್ರೀ ಶಾರದಾ ಸ್ತುತಿ"},
+    { categoryId : 3, categoryName : "ಶ್ರೀ ಲಕ್ಷ್ಮೀದೇವಿ"},
+    { category : 4, categoryName : "ಶ್ರೀ ಕೃಷ್ಣ"}
+];
+
+let songs =
+[
+    {songId : 101, categoryId : 1, songName : "ವಂದಿಪೆ ನಿನಗೆ ಗಣನಾಥಾ"},
+    {songId : 102, categoryId : 1, songName : "ಅಂಬಾತನಯ"},
+    {songId : 103, categoryId : 1, songName : "ಶರಣು ಸಿದ್ಧಿವಿನಾಯಕ"},
+    {songId : 105, categoryId : 2, songName : "ನಮ್ಮಮ್ಮ ಶಾರದೆ ಉಮಾಮಹೇಶ್ವರಿ"},
+    {songId : 106, categoryId : 2, songName : "ಪಾರ್ವತಿ ಪಾಲಿಸೆನ್ನ"},
+    {songId : 107, categoryId : 2, songName : "ಉಮಾ ಕಾತ್ಯಾಯನಿ"},
+    {songId : 108, categoryId : 2, songName : "ಪಂಪಾಪುರದ ಲಿಂಗ"},
+    {songId : 101, categoryId : 3, songName : "ವಂದಿಪೆ ನಿನಗೆ ಗಣನಾಥಾ"},
+    {songId : 102, categoryId : 3, songName : "ಅಂಬಾತನಯ"},
+    {songId : 103, categoryId : 3, songName : "ಶರಣು ಸಿದ್ಧಿವಿನಾಯಕ"},
+    {songId : 105, categoryId : 4, songName : "ನಮ್ಮಮ್ಮ ಶಾರದೆ ಉಮಾಮಹೇಶ್ವರಿ"},
+    {songId : 106, categoryId : 4, songName : "ಪಾರ್ವತಿ ಪಾಲಿಸೆನ್ನ"},
+    {songId : 107, categoryId : 4, songName : "ಉಮಾ ಕಾತ್ಯಾಯನಿ"},
+    {songId : 108, categoryId : 4, songName : "ಪಂಪಾಪುರದ ಲಿಂಗ"},
 ];
 
 // Server-Side Scripts
 // Handle HTTP requests that browser will send
 // URL: http://localhost:3000/books
-webserver.get("/books", (request, response) => {
+webserver.get("/categories", (request, response) => {
     setTimeout(() => {
-        response.json(books); // sending string to browser (array of char) - char - 2 bytes
+        response.json(categories); // sending string to browser (array of char) - char - 2 bytes
+        // JSON Serialization: Converting in-memory objects to a string (javascript object notation)
+    }, 5000);
+});
+
+
+webserver.get("/songs", (request, response) => {
+    setTimeout(() => {
+        response.json(songs); // sending string to browser (array of char) - char - 2 bytes
         // JSON Serialization: Converting in-memory objects to a string (javascript object notation)
     }, 5000);
 });
 
 // JSON Deserialization: Converting json string to JS objects or .NET object or Python objects
 
-webserver.post("/books", (request, response) => {
-    console.log(request.body);
-});
+// webserver.post("/books", (request, response) => {
+//     console.log(request.body);
+// });
 
-// amazon.in
-let products = [
-
-    { name: "Pepsi", price: 40, image: "pepsi.png" },
-
-    { name: "Coke", price: 40, image: "coke.png" },
-
-    { name: "Mirinda", price: 40, image: "mirinda.png" },
-
-    { name: "Laptop", price: 40000, image: "laptop.png" },
-
-    { name: "Mobile", price: 20000, image: "mobile.png" }
-
-];
-
-webserver.get("/products/:skip/:take", (request, response) => {
-
-    let skip = Number(request.params.skip);
-    let take = Number(request.params.take);
-
-    setTimeout(() => {
-
-        // slice never modifies existing but creats new array - Immutable Operations
-        let portion = products.slice(skip, take + skip) ; 
-
-        // Mutable: push, pop, splice (insert and delete in array)
-        
-        // Immutable: slice (extracting portion from array), concat, filter, map
-
-        response.json(portion);
-
-    }, 3000);
-
-});
