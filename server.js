@@ -21,36 +21,51 @@ webserver.use(bodyParser.json()); // this is deserializer
 // from the dist folder
 //webserver.use ( express.static("dist") ) ;
 
+var fs = require('fs');
+var parser = require('xml2json');
+var categories;
+var songs;
 
-let categories = 
-[
-    { categoryId : 1, categoryName : "ಗಣೇಶ ಸ್ತುತಿ"},
-    { categoryId : 2, categoryName : "ಶ್ರೀ ಶಾರದಾ ಸ್ತುತಿ"},
-    { categoryId : 3, categoryName : "ಶ್ರೀ ಲಕ್ಷ್ಮೀದೇವಿ"},
-    { category : 4, categoryName : "ಶ್ರೀ ಕೃಷ್ಣ"}
-];
+fs.readFile( './xml/Category.xml', function(err, data) {
+    categories = JSON.parse(parser.toJson(data, {reversible: true}));
+  debugger;
+});
 
-let songs =
-[
-    {songId : 101, categoryId : 1, songName : "ವಂದಿಪೆ ನಿನಗೆ ಗಣನಾಥಾ"},
-    {songId : 102, categoryId : 1, songName : "ಅಂಬಾತನಯ"},
-    {songId : 103, categoryId : 1, songName : "ಶರಣು ಸಿದ್ಧಿವಿನಾಯಕ"},
-    {songId : 105, categoryId : 2, songName : "ನಮ್ಮಮ್ಮ ಶಾರದೆ ಉಮಾಮಹೇಶ್ವರಿ"},
-    {songId : 106, categoryId : 2, songName : "ಪಾರ್ವತಿ ಪಾಲಿಸೆನ್ನ"},
-    {songId : 107, categoryId : 2, songName : "ಉಮಾ ಕಾತ್ಯಾಯನಿ"},
-    {songId : 108, categoryId : 2, songName : "ಪಂಪಾಪುರದ ಲಿಂಗ"},
-    {songId : 101, categoryId : 3, songName : "ವಂದಿಪೆ ನಿನಗೆ ಗಣನಾಥಾ"},
-    {songId : 102, categoryId : 3, songName : "ಅಂಬಾತನಯ"},
-    {songId : 103, categoryId : 3, songName : "ಶರಣು ಸಿದ್ಧಿವಿನಾಯಕ"},
-    {songId : 105, categoryId : 4, songName : "ನಮ್ಮಮ್ಮ ಶಾರದೆ ಉಮಾಮಹೇಶ್ವರಿ"},
-    {songId : 106, categoryId : 4, songName : "ಪಾರ್ವತಿ ಪಾಲಿಸೆನ್ನ"},
-    {songId : 107, categoryId : 4, songName : "ಉಮಾ ಕಾತ್ಯಾಯನಿ"},
-    {songId : 108, categoryId : 4, songName : "ಪಂಪಾಪುರದ ಲಿಂಗ"},
-];
+fs.readFile( './xml/Song.xml', function(err, data) {
+    songs = JSON.parse(parser.toJson(data, {reversible: true}));
+  debugger;
+});
+
+// let categories = 
+// [
+//     { categoryId : 1, categoryName : "ಗಣೇಶ ಸ್ತುತಿ"},
+//     { categoryId : 2, categoryName : "ಶ್ರೀ ಶಾರದಾ ಸ್ತುತಿ"},
+//     { categoryId : 3, categoryName : "ಶ್ರೀ ಲಕ್ಷ್ಮೀದೇವಿ"},
+//     { category : 4, categoryName : "ಶ್ರೀ ಕೃಷ್ಣ"}
+// ];
+
+// let songs =
+// [
+//     {songId : 101, categoryId : 1, songName : "ವಂದಿಪೆ ನಿನಗೆ ಗಣನಾಥಾ"},
+//     {songId : 102, categoryId : 1, songName : "ಅಂಬಾತನಯ"},
+//     {songId : 103, categoryId : 1, songName : "ಶರಣು ಸಿದ್ಧಿವಿನಾಯಕ"},
+//     {songId : 105, categoryId : 2, songName : "ನಮ್ಮಮ್ಮ ಶಾರದೆ ಉಮಾಮಹೇಶ್ವರಿ"},
+//     {songId : 106, categoryId : 2, songName : "ಪಾರ್ವತಿ ಪಾಲಿಸೆನ್ನ"},
+//     {songId : 107, categoryId : 2, songName : "ಉಮಾ ಕಾತ್ಯಾಯನಿ"},
+//     {songId : 108, categoryId : 2, songName : "ಪಂಪಾಪುರದ ಲಿಂಗ"},
+//     {songId : 101, categoryId : 3, songName : "ವಂದಿಪೆ ನಿನಗೆ ಗಣನಾಥಾ"},
+//     {songId : 102, categoryId : 3, songName : "ಅಂಬಾತನಯ"},
+//     {songId : 103, categoryId : 3, songName : "ಶರಣು ಸಿದ್ಧಿವಿನಾಯಕ"},
+//     {songId : 105, categoryId : 4, songName : "ನಮ್ಮಮ್ಮ ಶಾರದೆ ಉಮಾಮಹೇಶ್ವರಿ"},
+//     {songId : 106, categoryId : 4, songName : "ಪಾರ್ವತಿ ಪಾಲಿಸೆನ್ನ"},
+//     {songId : 107, categoryId : 4, songName : "ಉಮಾ ಕಾತ್ಯಾಯನಿ"},
+//     {songId : 108, categoryId : 4, songName : "ಪಂಪಾಪುರದ ಲಿಂಗ"},
+// ];
 
 // Server-Side Scripts
 // Handle HTTP requests that browser will send
 // URL: http://localhost:3000/books
+
 webserver.get("/categories", (request, response) => {
     setTimeout(() => {
         response.json(categories); // sending string to browser (array of char) - char - 2 bytes
