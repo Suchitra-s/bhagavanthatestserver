@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - bhagavanthatest
+name: Build and deploy Node.js app to Azure Web App - BhagavanthaTrial
 
 on:
   push:
@@ -29,7 +29,7 @@ jobs:
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'bhagavanthatest'
+        app-name: 'BhagavanthaTrial'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_cd785a4ee7fb4fe5b0b69e234cb6fcbb }}
         package: .
